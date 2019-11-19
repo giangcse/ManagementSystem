@@ -5,8 +5,8 @@ Hệ thống web quản lý quán cafe sử dụng ngôn ngữ PHP, MySQL cho Ba
 Tài khoản: <strong>giangphan</strong><br>
 Mật khẩu: <strong>giang</strong><br>
 <i>Đối với các tài khoản khác thì tài khoản là tên họ viết liền không dâu, mật khẩu là tên không dấu.</i><br>
-<img src="CDM.png">
+<img src="CDM.PNG">
 
 <center>Conceptual Data Model<center>
-<img src="RELATIONSHIP.png">
+<img src="RELATIONSHIP.PNG">
 <center>Constraint key Design View<center>
