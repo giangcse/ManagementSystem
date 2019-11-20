@@ -1,7 +1,7 @@
 # ManagementSystem
 
 Hệ thống web quản lý quán cafe sử dụng ngôn ngữ PHP, MySQL cho Back-end và HTML, CSS, JS cho front-end (Bootstrap Framework).<br>
-Demo: <a href="http://www.ms.giangcse.site/">www.ms.giangcse.site</a>
+Demo: <a href="http://www.ms.giangcse.site/">www.ms.giangcse.site</a><br>
 <i>Lưu ý: <strong>Import (nhập) cơ sở dữ liệu ms.sql vào phpmyadmin và cấu hình lại file sql_conn.php trước khi sử dụng.</strong></i><br>
 Tài khoản: <strong>giangphan</strong><br>
 Mật khẩu: <strong>giang</strong><br>
