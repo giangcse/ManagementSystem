@@ -22,6 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
     <!-- Card a href style -->
     <style type="text/css">
+      @import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
       a.custom-card,
       a.custom-card:hover {
           color: inherit;
@@ -112,7 +113,7 @@
   if($show_query->num_rows > 0)
     while($row = mysqli_fetch_assoc($show_query)){
       $gia = number_format($row['P_PRICE'], 0); 
-      $ten = substr($row['P_NAME'], 0, 20).'...';
+      $ten = substr($row['P_NAME'], 0, 15).'...';
 ?>
       <!-- Hien thi the san pham -->
       <div class="col-md-3">
@@ -120,7 +121,7 @@
           <div class="card mb-4 shadow-sm" style="display: inline-block">
             <img class="card-img-top" src="<?php echo $row['P_THUMB_IMG']; ?>">
             <div class="card-body">
-              <h5 class="card-title"><?php echo $ten; ?></h5>
+              <h6 style="font-family: 'Roboto Slab', serif; font-size: 15px;"><?php echo $ten; ?></h6>
               <h4 class="card-text" id="currency" style="color: green;"><?php echo $gia; ?> đ</h4>
               <div class="d-flex justify-content-between align-items-center">
                 <p class="text-mute" style="color: red;"><?php echo $row['P_SPECIES']; ?></p>
