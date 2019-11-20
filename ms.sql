@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2019 at 05:38 PM
+-- Generation Time: Nov 20, 2019 at 02:07 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -41,7 +41,8 @@ CREATE TABLE `bill` (
 INSERT INTO `bill` (`B_ID`, `B_TIME`, `B_TOTAL`) VALUES
 (1, '2019-11-19 11:11:37', 78000),
 (2, '2019-11-19 11:11:03', 432000),
-(3, '2019-11-19 11:11:42', 225000);
+(3, '2019-11-19 11:11:42', 225000),
+(4, '2019-11-20 07:11:23', 180000);
 
 -- --------------------------------------------------------
 
@@ -71,6 +72,7 @@ INSERT INTO `detail_bill` (`P_ID`, `B_ID`, `S_ID`, `DB_QUANTITY`, `DB_TOTAL`) VA
 (7, 2, 42, 1, 45000),
 (7, 3, 42, 2, 90000),
 (8, 2, 42, 1, 55000),
+(11, 4, 42, 4, 180000),
 (13, 3, 42, 3, 135000);
 
 -- --------------------------------------------------------
@@ -265,7 +267,37 @@ INSERT INTO `product` (`P_ID`, `P_NAME`, `P_SPECIES`, `P_PRICE`, `P_THUMB_IMG`) 
 (10, 'Cold brew sá»¯a tÆ°Æ¡i macchiatio', 'Cafe', 50000, 'https://product.hstatic.net/1000075078/product/coldbrewmacchiato_af7dc44ed71b4856bfe48a756ed939e6_large.jpg'),
 (11, 'Cold brew truyá»n thá»‘ng', 'Cafe', 45000, 'https://product.hstatic.net/1000075078/product/classic_47aa187278184a4ea36a59cf279350c0_large.jpg'),
 (12, 'Espresso', 'Cafe', 35000, 'https://product.hstatic.net/1000075078/product/espresso_large.jpg'),
-(13, 'Latte', 'Cafe', 45000, 'https://product.hstatic.net/1000075078/product/latte__1__large.jpg');
+(13, 'Latte', 'Cafe', 45000, 'https://product.hstatic.net/1000075078/product/latte__1__large.jpg'),
+(14, 'Mocha', 'Cafe', 49000, 'https://product.hstatic.net/1000075078/product/mocha_large.jpg'),
+(15, 'Chocolate Ä‘Ã¡', 'Cafe', 55000, 'https://product.hstatic.net/1000075078/product/iced_chocolate_large.jpg'),
+(16, 'TrÃ  cherry macchiato', 'TrÃ  & Macchiato', 55000, 'https://product.hstatic.net/1000075078/product/cherry_mac_6a3403fdb832464da88de8c6e6ddf662_large.jpg'),
+(17, 'TrÃ  Ä‘Ã o cam sáº£', 'TrÃ  & Macchiato', 45000, 'https://product.hstatic.net/1000075078/product/tra_dao_cam_sa_on_bg_large.jpg'),
+(18, 'TrÃ  Ä‘en macchiato', 'TrÃ  & Macchiato', 42000, 'https://product.hstatic.net/1000075078/product/blacktea_macchiat_large.jpg'),
+(19, 'TrÃ  gáº¡o rang macchiato', 'TrÃ  & Macchiato', 48000, 'https://product.hstatic.net/1000075078/product/genmaicha_macchiatov_large.jpg'),
+(20, 'TrÃ  matcha latte', 'TrÃ  & Macchiato', 59000, 'https://product.hstatic.net/1000075078/product/matcha_latte_large.jpg'),
+(21, 'TrÃ  matcha macchiato', 'TrÃ  & Macchiato', 45000, 'https://product.hstatic.net/1000075078/product/matcha_macchiato_large.jpg'),
+(22, 'TrÃ  oolong sen An nhiÃªn', 'TrÃ  & Macchiato', 45000, 'https://product.hstatic.net/1000075078/product/trasen_29e9b22739f941ff84671361ae53f3dd_large.jpg'),
+(23, 'TrÃ  oolong váº£i NhÆ° Ã½', 'TrÃ  & Macchiato', 45000, 'https://product.hstatic.net/1000075078/product/travai_large.jpg'),
+(24, 'TrÃ  phÃºc bá»“n tá»­', 'TrÃ  & Macchiato', 49000, 'https://product.hstatic.net/1000075078/product/tea_raspberry_fda1ba90f506483eb6568f433690173a_large.png'),
+(25, 'TrÃ  xoÃ i macchiatio', 'TrÃ  & Macchiato', 55000, 'https://product.hstatic.net/1000075078/product/xoai_nong_mac_7f000cdac75e458e9ea5cdc3cb990419_large.jpg'),
+(26, 'TrÃ  xoÃ i macchiatio', 'TrÃ  & Macchiato', 55000, 'https://product.hstatic.net/1000075078/product/xoai_mac_c4534cc7607f4d58addf470a162e8359_large.jpg'),
+(27, 'Chanh sáº£ Ä‘Ã¡ xay', 'Thá»©c uá»‘ng Ä‘Ã¡ xay', 49000, 'https://product.hstatic.net/1000075078/product/chanhday_1x1_66281943c16b49d480a30860638fdc5e_large.jpg'),
+(28, 'Chocolate Ä‘Ã¡ xay', 'Thá»©c uá»‘ng Ä‘Ã¡ xay', 59000, 'https://product.hstatic.net/1000075078/product/chocolate_ice_blended_large.jpg'),
+(29, 'Cookies Ä‘Ã¡ xay', 'Thá»©c uá»‘ng Ä‘Ã¡ xay', 59000, 'https://product.hstatic.net/1000075078/product/cookies_ice_blended_large.jpg'),
+(30, 'ÄÃ o viá»‡t quáº¥t Ä‘Ã¡ xay', 'Thá»©c uá»‘ng Ä‘Ã¡ xay', 59000, 'https://product.hstatic.net/1000075078/product/dao_a0adb67ef806443298524236a4cc7e3c_large.jpg'),
+(31, 'Matcha Ä‘Ã¡ xay', 'Thá»©c uá»‘ng Ä‘Ã¡ xay', 59000, 'https://product.hstatic.net/1000075078/product/matcha_ice_blended_large.jpg'),
+(32, 'á»”i há»“ng viá»‡t quáº¥t Ä‘Ã¡ xay', 'Thá»©c uá»‘ng Ä‘Ã¡ xay', 59000, 'https://product.hstatic.net/1000075078/product/oihong_eba1ad20923841f6830e40e2dfd3e42a_large.jpg'),
+(33, 'PhÃºc bá»“n tá»­ cam Ä‘Ã¡ xay', 'Thá»©c uá»‘ng Ä‘Ã¡ xay', 59000, 'https://product.hstatic.net/1000075078/product/daxay_raspberry_01685c63649740678352a348f8b281a1_large.png'),
+(34, 'Sinh tá»‘ cam xoÃ i', 'Thá»©c uá»‘ng trÃ¡i cÃ¢y', 59000, 'https://product.hstatic.net/1000075078/product/mango_smoothie_large.jpg'),
+(35, 'Sinh tá»‘ viá»‡t quáº¥t', 'Thá»©c uá»‘ng trÃ¡i cÃ¢y', 59000, 'https://product.hstatic.net/1000075078/product/blueberry_smoothie_large.jpg'),
+(36, 'BÃ¡nh bÃ´ng lan trá»©ng muá»‘i', 'BÃ¡nh & snack', 29000, 'https://product.hstatic.net/1000075078/product/trungmui1_9abf7c43946b44e9948dbac1eff95e40_large.jpg'),
+(37, 'BÃ¡nh chocolate', 'BÃ¡nh & snack', 29000, 'https://product.hstatic.net/1000075078/product/choco_1x1_4faf8c80e6604cad88ce30528e2bd409_large.jpg'),
+(38, 'BÃ¡nh Croissant bÆ¡ tá»i', 'BÃ¡nh & snack', 29000, 'https://product.hstatic.net/1000075078/product/sungtrau_1x1_0e9a3e2590794cb9a6ff7ad9d9562c25_large.jpg'),
+(39, 'BÃ¡nh gáº¥u chocolate', 'BÃ¡nh & snack', 39000, 'https://product.hstatic.net/1000075078/product/gau_1x1_8b308db3a67a47688ff0d69a8c5615bf_large.jpg'),
+(40, 'BÃ¡nh matcha', 'BÃ¡nh & snack', 29000, 'https://product.hstatic.net/1000075078/product/matcha_178bdeeb1f9b47ea9f782048eb145f49_large.jpg'),
+(41, 'BÃ¡nh mÃ¬ chÃ  bÃ´ng phÃ´ mai', 'BÃ¡nh & snack', 32000, 'https://product.hstatic.net/1000075078/product/phomaichabong_1x1_e86c140c8a084458afcace64a93d2fd1_large.jpg'),
+(42, 'BÃ¡nh passion cheese', 'BÃ¡nh & snack', 29000, 'https://product.hstatic.net/1000075078/product/chanhday_1x1_da85397059a149e1b886237434f7ce48_large.jpg'),
+(43, 'BÃ¡nh tiramisu', 'BÃ¡nh & snack', 29000, 'https://product.hstatic.net/1000075078/product/tira_1x1_eb865751a24e4520be32a56129dd7a2d_large.jpg');
 
 -- --------------------------------------------------------
 
