@@ -260,17 +260,17 @@ header('Content-Type: text/html; charset=UTF-8');
 			  		 <th>Lương</th>
 			  	</tr>
 			  	<?php 
-			  		$info_sel = "SELECT employees.*, COUNT(shifts.salaryOfShift)*shifts.salaryOfShift AS luong FROM employees INNER JOIN shifts ON shifts.empAccount=employees.account WHERE account = '".$_SESSION['account']."'";
+			  		$info_sel = "SELECT employees.*, COUNT(detail_shift.DS_SALARYOFSHIFT)*detail_shift.DS_SALARYOFSHIFT AS luong FROM employees INNER JOIN detail_shift ON detail_shift.E_ID=employees.E_ID WHERE E_ACCOUNT = '".$_SESSION['account']."'";
 			  		$info_que = mysqli_query($conn, $info_sel);
 			  		if ($info_que->num_rows > 0) {
 			  			while ($row1 = mysqli_fetch_assoc($info_que)) {
 			  			?>
-			  			<td><?php echo $row1['id']; ?></td>
-			  			<td><?php echo $row1['fullname']; ?></td>
-			  			<td><?php echo $row1['id_num']; ?></td>
-			  			<td><?php echo $row1['phone']; ?></td>
-			  			<td><?php echo $row1['address']; ?></td>
-			  			<td><?php echo $row1['job']; ?></td>
+			  			<td><?php echo $row1['E_ID']; ?></td>
+			  			<td><?php echo $row1['E_FULLNAME']; ?></td>
+			  			<td><?php echo $row1['E_ID_NUM']; ?></td>
+			  			<td><?php echo $row1['E_PHONE']; ?></td>
+			  			<td><?php echo $row1['E_ADDRESS']; ?></td>
+			  			<td><?php echo $row1['E_JOB']; ?></td>
 			  			<td><?php echo number_format($row1['luong'], 0); ?>đ</td>
 			  			<?php
 			  			}
