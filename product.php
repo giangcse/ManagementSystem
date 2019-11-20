@@ -268,7 +268,7 @@ header('Content-Type: text/html; charset=UTF-8');
       <td><?php echo $row["P_ID"]; ?></td>
       <td><img src="<?php echo $row["P_THUMB_IMG"]; ?>" width="120" /></td>
       <th class="text-left"><?php echo $row["P_NAME"]; ?></th>
-      <td><?php echo $row["species"]; ?></td>
+      <td><?php echo $row["P_SPECIES"]; ?></td>
       <td class="text-right"><?php echo $Gia; ?> VNĐ</td>
       <td class="td-actions text-right">
         <form method="get" action="delete_product.php"> 
