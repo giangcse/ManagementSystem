@@ -121,7 +121,7 @@ header('Content-Type: text/html; charset=UTF-8');
                       </thead>
                       <tbody>
                         <?php
-                          $select_bd = "SELECT DISTINCT * FROM bill";
+                          $select_bd = "SELECT DISTINCT * FROM bill ORDER BY B_TIME DESC";
                           $query_bd = mysqli_query($conn, $select_bd);
                           if($query_bd->num_rows > 0)
                             while ($row = mysqli_fetch_assoc($query_bd)) {
