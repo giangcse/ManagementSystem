@@ -106,73 +106,20 @@
   <main role="main" class="container md">                                  
     <div class="my-3 p-3 bg-white rounded shadow-sm">
       <div class="row">
- <?php
-  header("Content-type: text/html; charset=utf-8");
-  $show = "SELECT * FROM product";
-  $show_query = mysqli_query($conn, $show);
-  if($show_query->num_rows > 0)
-    while($row = mysqli_fetch_assoc($show_query)){
-      $gia = number_format($row['P_PRICE'], 0); 
-      $ten = substr($row['P_NAME'], 0, 15).'...';
-?>
-      <!-- Hien thi the san pham -->
-      <div class="col-md-3">
-        <a data-toggle="modal" data-target="#<?php echo $row['P_ID']; ?>" class="custom-card">
-          <div class="card mb-4 shadow-sm" style="display: inline-block">
-            <img class="card-img-top" src="<?php echo $row['P_THUMB_IMG']; ?>">
-            <div class="card-body">
-              <h6 style="font-family: 'Roboto Slab', serif; font-size: 15px;"><?php echo $ten; ?></h6>
-              <h4 class="card-text" id="currency" style="color: green;"><?php echo $gia; ?> đ</h4>
-              <div class="d-flex justify-content-between align-items-center">
-                <p class="text-mute" style="color: red;"><?php echo $row['P_SPECIES']; ?></p>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- modal hiển thị thông tin sản phẩm -->
-      <div class="modal fade" id="<?php echo $row['P_ID']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <!-- <h4 class="modal-title" id="<?php echo $row['P_NAME']; ?>"><?php echo $row['P_NAME']; ?></h4> -->
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="container-fluid">
-                <form method="get" action="addcart.php">
-                <div class="row">
-                  <div class="col-md-6">
-                    <img src="<?php echo $row['P_THUMB_IMG']; ?>" alt="<?php echo $row['P_ID']; ?>" width="500" class="img-fluid" alt="Responsive image">
-                  </div>
-                  <div class="col-md-6">
-                    <h3><?php echo $row['P_NAME']; ?></h3>
-                    <h5 style="color: green;"><?php echo $gia; ?> đ</h5>
-                    <p><?php echo $row['P_SPECIES']; ?></p>  
-                    <div class="def-number-input number-input safari_only">
-                      <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus" type="button" ></button>
-                      <input class="quantity" min="0" name="quantity" value="1" type="number">
-                      <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus" type="button" ></button>
-                    </div>
-                    <div class="form-inline">
-                      <button type="submit" name="id" class="btn btn-danger" value="<?php echo $row['P_ID']; ?>">Thêm vào giỏ</button>
-                    </div>
-                  </div>
-                </div>
-                </form>
-              </div>
-            </div>
-          </div>
+        <div class="col-10"></div>
+        <div class="col">
+          <button type="button" data-toggle="modal" data-target="#paymentModal" class="btn btn-success"><i class="material-icons">shopping_cart</i> Giỏ hàng</button>
         </div>
       </div>
-      <?php
-        }
-      ?>
+      <hr>
+      <div class="row">
+        <?php
+          include 'show_product.php';
+          show();
+        ?>
       </div>
     </div>
-  <button type="submit" id="myBtn" data-toggle="modal" data-target="#paymentModal" class="btn btn-success">Thanh toán</button> 
+  <button type="button" id="myBtn" data-toggle="modal" data-target="#paymentModal" class="btn btn-success"><i class="material-icons">shopping_cart</i></button> 
   <!-- Script nút thanh toán  -->                          
   <script>
   //Get the button
@@ -190,61 +137,69 @@
   }
   </script>
   <!-- Modal thanh toán -->
-  <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Tên</th>
-                <th scope="col">Số lượng</th>
-                <th scope="col" class="text-right">Thành tiền</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>      
-          <?php
-            error_reporting(0);
-            $total = 0;
-            foreach($_SESSION['cart'] as $key=>$value){
-            $cart_select = "SELECT * FROM product WHERE P_ID = '".$key."'";
-            $cart_query = mysqli_query($conn, $cart_select);
-            if($cart_query->num_rows > 0)
-              while($row0 = mysqli_fetch_assoc($cart_query)){ 
-                echo'
-                      <tr>
-                        <td><img src="'.$row0['P_THUMB_IMG'].'" class="img-fluid" width="60"></td>
-                        <th>'.$row0['P_NAME'].'</th>
-                        <td class="text-center">'.$_SESSION['cart'][$row0['id']].'</td>
-                        <td class="text-right">'.number_format($_SESSION['cart'][$row0['P_ID']]*$row0['P_PRICE'], 0).'đ</td>
-                        <td><form method="get" action="deletecart.php?id="><button class="close" type="submit" name="delete" value="'.$row0['P_ID'].'"><span aria-hidden="true">&times;</span></button></form></td>
-                      </tr>';
-                $total = $total + $_SESSION['cart'][$row0['P_ID']]*$row0['P_PRICE'];
-              }
-            }
-            $_SESSION['cart']['total'] = $total;
-          ?>
-          <tr>
-            <th class="text-right" colspan="5">Tổng tiền: <?php echo number_format($total, 0); ?>đ</th>
-          </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="modal-footer">
-          <form method="post" action="pay.php">
-            <button type="submit" name="pay" class="btn btn-success">Thanh toán</button>
-          </form>
+  <div class="modal fade bd-example-modal-lg" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="paymentModal">Thông tin giỏ hàng</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Hình</th>
+                  <th scope="col">Tên</th>
+                  <th scope="col" class="text-center">Giá</th>
+                  <th scope="col" class="text-center">Số lượng</th>
+                  <th scope="col" class="text-center">Thành tiền</th>
+                  <th scope="col" class="text-right">Xóa</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                  $tongtien = 0;
+
+                  if (isset($_SESSION['CART'])) {
+                    foreach ($_SESSION['CART'] as $key => $value) {
+                      $findProCmd = "SELECT * FROM product WHERE P_ID = '".$key."'";
+                      $findPro = mysqli_query($conn, $findProCmd);
+
+                      if ($findPro->num_rows > 0) {
+                        while ($Pro = mysqli_fetch_assoc($findPro)) {
+                          $tongtien += $_SESSION['CART'][$key]*$Pro['P_PRICE'];
+                        ?>
+                        <tr>
+                          <td><img src="<?php echo $Pro['P_THUMB_IMG'] ?>" width="50px"></td>
+                          <th><?php echo $Pro['P_NAME']; ?></th>
+                          <td class="text-center"><?php echo number_format($Pro['P_PRICE'], 0); ?>đ</td>
+                          <td class="text-center"><?php echo $_SESSION['CART'][$key]; ?></td>
+                          <td class="text-center"><?php echo number_format($_SESSION['CART'][$key]*$Pro['P_PRICE'], 0); ?>đ</td>
+                          <td class="text-center"><form method="post" action="delete_from_cart.php"><button type="submit" class="close" name="deleteCart" value="<?php echo $key; ?>"><span aria-hidden="true">&times;</span></button></form></td>
+                        </tr>
+                        <?php
+                        }
+                      }
+                    }
+                  }
+                  $_SESSION['CART']['TOTAL'] = $tongtien;
+                ?>
+              </tbody>
+            </table>
+            <h3 style="color: red;" class="text-right">Tổng tiền: <?php echo number_format($tongtien, 0) ?>đ</h3>
+          </div>
+          <div class="modal-footer">
+            
+            <form action="pay.php" method="post">
+              <button type="submit" class="btn btn-success" name="payBtn">Thanh toán</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <!-- Ket thuc modal -->
   </main>
 
 <?php 

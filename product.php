@@ -275,38 +275,12 @@ header('Content-Type: text/html; charset=UTF-8');
           <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit<?php echo $row['P_ID']; ?>">
             <i class="material-icons">edit</i>
           </button>
-          <button type="submit" rel="tooltip" class="btn btn-danger btn-sm" id="delete" name="delete" value="<?php echo $row["P_ID"]; ?>" onsubmit="return verify()">
+          <button type="submit" rel="tooltip" class="btn btn-danger btn-sm" id="delete" name="delete" value="<?php echo $row["P_ID"]; ?>" onclick="return confirm('Bạn có muốn xóa sản phẩm này?'');">
             <i class="material-icons">delete</i>
           </button>
         </form>
       </td>
     </tr>
-<script type="text/javascript">
-  function verify(){
-    var re = false
-    Swal.fire({
-      title: 'Bạn có muốn xóa sản phẩm này?',
-      text: "Không thể hoàn tác lại được!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.value) {
-        Swal.fire(
-          'Đã xóa!',
-          '',
-          'success'
-        )
-        re = true
-      }else{
-        re = false
-      }
-    })
-    return re
-  }
-</script>
                               <!-- Modal chỉnh sửa -->
                             <div class="modal fade" id="edit<?php echo $row['P_ID']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog" role="document">
