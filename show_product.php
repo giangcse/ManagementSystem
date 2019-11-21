@@ -1,10 +1,6 @@
 <?php
   if (!isset($_SESSION))
     session_start();
-  else
-    if (!isset($_SESSION['account']))
-      header('Location: index.php');
-
 
   function show(){
     include 'sql_conn.php';
