@@ -180,7 +180,7 @@ header('Content-Type: text/html; charset=UTF-8');
                         <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
                           <li class="breadcrumb-item"><a href="#">Thống kê</a></li>
-                          <li class="breadcrumb-item" aria-current="page">Sản phẩm đã bán</li>
+                          <li class="breadcrumb-item" aria-current="page">Sản phẩm đã bán tháng <?php echo date('m'); ?></li>
                         </ol>
                       </nav>
                         <div class="chart">
